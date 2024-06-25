@@ -1,5 +1,6 @@
 import unittest
 from collections import Counter
+from unittest.mock import patch
 from Plants import Field, Flower, Tree, Vegetable
 
 class TestField(unittest.TestCase):
@@ -37,3 +38,26 @@ class TestField(unittest.TestCase):
         self.assertEqual(self.field.get_profit(), 0.0)
         self.assertEqual(self.field.get_plants_counter()[self.apple_tree], 0)
         self.assertNotIn(self.apple_tree, self.field._Field__plants)
+
+    @patch('builtins.print')
+    def test_get_current_plants(self, mock_print):
+        self.field.plant(self.rose)
+        self.field.plant(self.apple_tree)
+        self.field.plant(self.carrot)
+
+        self.field.get_current_plants()
+
+        mock_print.assert_any_call("Current plants in the field:")
+        mock_print.assert_any_call('Index:', 1)
+        mock_print.assert_any_call('A 0.5m Red Rose, blooms in Spring. Price: 10.0.')
+        mock_print.assert_any_call('Number of plants:', 1)
+        mock_print.assert_any_call('--------------------------------------')
+        mock_print.assert_any_call('Index:', 2)
+        mock_print.assert_any_call('A 3.0m Green Apple Tree, bears fruit. Price: 50.0.')
+        mock_print.assert_any_call('Number of plants:', 1)
+        mock_print.assert_any_call('--------------------------------------')
+        mock_print.assert_any_call('Index:', 3)
+        mock_print.assert_any_call('A 0.2m Orange Carrot, annual plant. Price: 2.0.')
+        mock_print.assert_any_call('Number of plants:', 1)
+        mock_print.assert_any_call('--------------------------------------')
+        mock_print.assert_any_call('Current number of plant types: 3')
