@@ -120,3 +120,16 @@ class Vegetable(Plant):
 
     def use_case(self):
         return "Suitable for consumption and culinary purposes."
+
+
+field = Field("My Field")
+rose = Flower("Rose", "Red", 10.0, 0.5, "Spring")
+apple_tree = Tree("Apple Tree", "Green", 50.0, 3.0, True)
+carrot = Vegetable("Carrot", "Orange", 2.0, 0.2, True)
+field.plant(rose)
+field.plant(apple_tree)
+field.plant(carrot)
+field.harvest(rose)
+print(rose.growth_conditions())
+print("Current profit:", field.get_profit())
+print("Current plants counter:", field.get_plants_counter())
