@@ -23,3 +23,17 @@ class TestField(unittest.TestCase):
         self.field.plant(self.apple_tree)
         self.assertEqual(self.field.get_profit(), -60.0)
         self.assertEqual(self.field.get_plants_counter()[self.apple_tree], 1)
+
+    def test_harvest(self):
+        self.field.plant(self.rose)
+        self.field.plant(self.apple_tree)
+
+        self.field.harvest(self.rose)
+        self.assertEqual(self.field.get_profit(), -50.0)
+        self.assertEqual(self.field.get_plants_counter()[self.rose], 0)
+        self.assertNotIn(self.rose, self.field._Field__plants)
+
+        self.field.harvest(self.apple_tree)
+        self.assertEqual(self.field.get_profit(), 0.0)
+        self.assertEqual(self.field.get_plants_counter()[self.apple_tree], 0)
+        self.assertNotIn(self.apple_tree, self.field._Field__plants)
