@@ -78,3 +78,26 @@ class Flower(Plant):
 
     def use_case(self):
         return "Ideal for decorative purposes."
+
+
+class Tree(Plant):
+    def __init__(self, species: str, color: str, price: float, size: float, is_fruit_bearing: bool):
+        super().__init__(species, color, price, size)
+        self.is_fruit_bearing = is_fruit_bearing
+
+    def get_description(self):
+        desc = f"A {self.size}m {self.color} {self.species}, "
+        desc += "bears fruit." if self.is_fruit_bearing else "does not bear fruit."
+        return desc + f" Price: {self.price}."
+
+    def growth_conditions(self):
+        return "Needs rich, moist soil and plenty of space."
+
+    def harvest_instructions(self):
+        if self.is_fruit_bearing:
+            return "Pick the fruits when ripe."
+        else:
+            return "No harvest instructions as it does not bear fruit."
+
+    def use_case(self):
+        return "Provides shade and can improve air quality."
