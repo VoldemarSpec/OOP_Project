@@ -61,3 +61,20 @@ class Plant:
 
     def use_case(self):
         raise NotImplementedError("Child classes should implement this!")
+
+class Flower(Plant):
+    def __init__(self, species: str, color: str, price: float, size: float, blooming_season: str):
+        super().__init__(species, color, price, size)
+        self.blooming_season = blooming_season
+
+    def get_description(self):
+        return f"A {self.size}m {self.color} {self.species}, blooms in {self.blooming_season}. Price: {self.price}."
+
+    def growth_conditions(self):
+        return "Needs well-drained soil and full sunlight."
+
+    def harvest_instructions(self):
+        return "Cut the stem at an angle and place in water immediately."
+
+    def use_case(self):
+        return "Ideal for decorative purposes."
