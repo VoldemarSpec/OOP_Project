@@ -41,3 +41,23 @@ class Field:
 
     def get_plants_counter(self):
         return self.__plants_counter
+
+class Plant:
+    def __init__(self, species: str, color: str, price: float, size: float):
+        self.species = species
+        self.color = color
+        self.price = price
+        self.size = size
+
+
+    def get_description(self):
+        raise NotImplementedError("Child classes should implement this!")
+
+    def growth_conditions(self):
+        raise NotImplementedError("Child classes should implement this!")
+
+    def harvest_instructions(self):
+        raise NotImplementedError("Child classes should implement this!")
+
+    def use_case(self):
+        raise NotImplementedError("Child classes should implement this!")
