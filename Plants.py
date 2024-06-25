@@ -101,3 +101,22 @@ class Tree(Plant):
 
     def use_case(self):
         return "Provides shade and can improve air quality."
+
+class Vegetable(Plant):
+    def __init__(self, species: str, color: str, price: float, size: float, is_annual: bool):
+        super().__init__(species, color, price, size)
+        self.is_annual = is_annual
+
+    def get_description(self):
+        desc = f"A {self.size}m {self.color} {self.species}, "
+        desc += "annual plant." if self.is_annual else "perennial plant."
+        return desc + f" Price: {self.price}."
+
+    def growth_conditions(self):
+        return "Requires fertile soil and regular watering."
+
+    def harvest_instructions(self):
+        return "Harvest when the vegetable reaches desired size and color."
+
+    def use_case(self):
+        return "Suitable for consumption and culinary purposes."
