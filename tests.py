@@ -61,3 +61,18 @@ class TestField(unittest.TestCase):
         mock_print.assert_any_call('Number of plants:', 1)
         mock_print.assert_any_call('--------------------------------------')
         mock_print.assert_any_call('Current number of plant types: 3')
+
+    def test_growth_conditions(self):
+        self.assertEqual(self.rose.growth_conditions(), "Needs well-drained soil and full sunlight.")
+        self.assertEqual(self.apple_tree.growth_conditions(), "Needs rich, moist soil and plenty of space.")
+        self.assertEqual(self.carrot.growth_conditions(), "Requires fertile soil and regular watering.")
+
+    def test_harvest_instructions(self):
+        self.assertEqual(self.rose.harvest_instructions(), "Cut the stem at an angle and place in water immediately.")
+        self.assertEqual(self.apple_tree.harvest_instructions(), "Pick the fruits when ripe.")
+        self.assertEqual(self.carrot.harvest_instructions(), "Harvest when the vegetable reaches desired size and color.")
+
+    def test_use_case(self):
+        self.assertEqual(self.rose.use_case(), "Ideal for decorative purposes.")
+        self.assertEqual(self.apple_tree.use_case(), "Provides shade and can improve air quality.")
+        self.assertEqual(self.carrot.use_case(), "Suitable for consumption and culinary purposes.")
